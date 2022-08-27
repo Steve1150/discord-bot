@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const { token } = require('../json/config.json');
+const { token } = require('./json/config.json');
 const { on } = require('node:events');
 
 
