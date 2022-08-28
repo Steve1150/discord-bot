@@ -8,11 +8,10 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Ping? Ping?! PING?!?!?!?!'),
 	async execute(interaction) {
-		await interaction.deferReply();
-		await interaction.editReply('Pong! *I guess....* :coffee:');
-		await wait(10000);
+		await interaction.reply('Pong! *I guess....* :coffee:');
+		await wait(6000);
 		await interaction.editReply('<@'+interaction.user.id+'>' + ' is sussy wussy haha :flushed:');
-		await wait(1000);
+		await wait(700);
 		await interaction.editReply('Pong! *I guess....* :coffee:');
 	},
 };
