@@ -1,6 +1,7 @@
 const {
 	SlashCommandBuilder
 } = require('@discordjs/builders');
+const { debug } = require('console');
 const wait = require('util').promisify(setTimeout);
 
 function insertSpaces(aString) {
@@ -15,16 +16,25 @@ module.exports = {
 			option.setName('text')
 			.setDescription('Text to Thiccify')
 			.setRequired(true)
+		)
+		.addStringOption(option =>
+			option.setName('private')
+			.setDescription('Do you want everyone to see this?')
+			.setRequired(true)
 		),
 
 	async execute(interaction) {
 		try {
+			if(interaction.options.getString('private').toLowerCase() == 'true'){ privatedmsg = true }
+			else{ privatedmsg = false }
 			const spacedstring = insertSpaces(interaction.options.getString('text'));
-			await interaction.reply(`**:sparkles: ${spacedstring} :sparkles:**`);
+			console.log(insertSpaces(interaction.options.getString('text')));
+			console.log(spacedstring);
+			await interaction.reply({content: `**:sparkles: ${spacedstring} :sparkles:**`, ephemeral: privatedmsg});
 		} catch (error) {
-			await interaction.reply(`**:rage: How dare you try to break me! :rage:**`);
-			await wait(3000);
-			await interaction.editReply(`**but if ya need the info here it is (send this to <@508743147560370177> pls):** \n` + "`" + error + "`");
+			await interaction.reply({content: "**:scream: OH GOD SOMETHING WENT WRONG!!!! :scream:**", ephemeral: true});
+			await wait(2500);
+			await interaction.editReply({content: "**but seriously... If you need the info here it is (if not, send this to <@508743147560370177> pls):**\n**Time for the nasty:**\n" + "`" + error + "`", ephemeral: true});
 		}
 	},
 };

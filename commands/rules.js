@@ -25,7 +25,7 @@ module.exports = {
         if(ruletoshow<=rulearray.length-1){
         await interaction.reply("**Rule " + rulenum + ": **" + rulearray[ruletoshow]);
         } else{
-            await interaction.reply("oi bruv, that rule don't exist, tf u tryna do?")
+            await interaction.reply({content: "*That rule doesn't exist... Try to choose one that does next time, okay?*", ephemeral: true})
         };
 
 	},

@@ -38,7 +38,7 @@ module.exports = {
 		numofpics = interaction.options.getInteger('amount');
 		await interaction.reply({files:['https://c.tenor.com/thySfaLFwwAAAAAC/cat-meow-loading.gif']});
 
-		if (numofpics < 6) { await wait(1000); console.log("We waited my guy!!!") };
+		if (numofpics < 6) { await wait(500) };
 
 		for (let i = 1; i <= numofpics; i += 1 ){
 			

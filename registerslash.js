@@ -1,6 +1,6 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { token } = require('../json/config.json');
+const { token } = require('./json/config.json');
 const fs = require('fs');
 
 const commands = [];
@@ -27,6 +27,9 @@ const rest = new REST({
 
 		await rest.put(
 			Routes.applicationGuildCommands(clientid, guildid), {
+				body: commands
+			},
+			Routes.applicationCommands(clientid), {
 				body: commands
 			},
 		);
