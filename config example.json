@@ -1,0 +1,6 @@
+{
+	"token": "discord bot token here",
+    "catpikey": "cat api key here",
+    "clientid": "bot client id here",
+    "guildid": "guild (server) id here"
+}

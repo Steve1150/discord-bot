@@ -29,6 +29,9 @@ const rest = new REST({
 			Routes.applicationGuildCommands(clientid, guildid), {
 				body: commands
 			},
+			Routes.applicationCommands(clientid), {
+				body: commands
+			},
 		);
 
 		console.log('Successfully reloaded application (/) commands.');

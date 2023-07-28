@@ -1,6 +1,7 @@
 const {
 	SlashCommandBuilder
 } = require('@discordjs/builders');
+const { debug } = require('console');
 const wait = require('util').promisify(setTimeout);
 
 function insertSpaces(aString) {
@@ -24,8 +25,12 @@ module.exports = {
 
 	async execute(interaction) {
 		try {
+			if(interaction.options.getString('private').toLowerCase() == 'true'){ privatedmsg = true }
+			else{ privatedmsg = false }
 			const spacedstring = insertSpaces(interaction.options.getString('text'));
-			await interaction.reply({content: `**:sparkles: ${spacedstring} :sparkles:**`, ephemeral: interaction.options.getString('private')});
+			console.log(insertSpaces(interaction.options.getString('text')));
+			console.log(spacedstring);
+			await interaction.reply({content: `**:sparkles: ${spacedstring} :sparkles:**`, ephemeral: privatedmsg});
 		} catch (error) {
 			await interaction.reply({content: "**:scream: OH GOD SOMETHING WENT WRONG!!!! :scream:**", ephemeral: true});
 			await wait(2500);
